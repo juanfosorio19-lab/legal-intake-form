@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Bufete Jurídico - Inicio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Theme Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2b90d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#221e10",
+                    },
+                    fontFamily: {
+                        "display": ["Newsreader", "serif"],
+                        "sans": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                    backgroundImage: {
+                        'subtle-pattern': "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f2b90d' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for webkit to blend in */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #221e10;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #342d18;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a4025;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased">
+    <!-- Main Container -->
+    <div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden bg-subtle-pattern">
+        <!-- Status Bar Imitation (iOS safe area) -->
+        <div class="h-12 w-full bg-transparent"></div>
+        <!-- Top App Bar -->
+        <div
+            class="sticky top-0 z-50 flex items-center justify-between p-4 pb-2 backdrop-blur-md bg-background-light/80 dark:bg-background-dark/80">
+            <div
+                class="text-slate-900 dark:text-white flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors cursor-pointer">
+                <span class="material-symbols-outlined text-[24px]">arrow_back</span>
+            </div>
+            <h2
+                class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center font-display">
+                Bufete Jurídico
+            </h2>
+            <div class="flex size-12 items-center justify-center">
+                <button
+                    class="text-primary hover:text-primary/80 transition-colors text-base font-bold leading-normal tracking-[0.015em] shrink-0 font-sans">
+                    Ayuda
+                </button>
+            </div>
+        </div>
+        <!-- Hero Section -->
+        <main class="flex-1 flex flex-col items-center px-6 pt-8 pb-10">
+            <!-- Logo / Branding Icon -->
+            <div
+                class="mb-8 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 border border-primary/20">
+                <span class="material-symbols-outlined text-primary text-[32px]">balance</span>
+            </div>
+            <h1
+                class="text-slate-900 dark:text-white tracking-tight text-[36px] font-bold leading-[1.1] text-center mb-4 max-w-[320px]">
+                Comience su Asesoría Legal
+            </h1>
+            <p
+                class="text-slate-600 dark:text-slate-300 text-lg font-normal leading-relaxed text-center max-w-[340px] mb-12 font-sans">
+                Nuestro proceso de solicitud toma menos de 5 minutos y nos permite entender mejor su caso para brindarle
+                la mejor defensa.
+            </p>
+            <!-- Benefits Section -->
+            <div class="w-full max-w-md flex flex-col gap-8 @container">
+                <div class="flex items-center gap-4 mb-2">
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
+                    <span class="text-primary text-sm font-bold uppercase tracking-widest font-sans">Sus
+                        Beneficios</span>
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
+                </div>
+                <div class="grid grid-cols-1 gap-4">
+                    <!-- Benefit 1 -->
+                    <div
+                        class="group flex items-center gap-4 rounded-xl border border-primary/20 bg-white/5 dark:bg-white/5 p-4 transition-all hover:bg-primary/5 hover:border-primary/40">
+                        <div
+                            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-background-dark transition-colors">
+                            <span class="material-symbols-outlined">lock</span>
+                        </div>
+                        <div class="flex flex-col gap-0.5">
+                            <h3 class="text-slate-900 dark:text-white text-base font-bold leading-tight">
+                                Confidencialidad 100%</h3>
+                            <p class="text-slate-500 dark:text-[#cbbc90] text-sm font-normal leading-normal font-sans">
+                                Todos sus datos están protegidos y encriptados.</p>
+                        </div>
+                    </div>
+                    <!-- Benefit 2 -->
+                    <div
+                        class="group flex items-center gap-4 rounded-xl border border-primary/20 bg-white/5 dark:bg-white/5 p-4 transition-all hover:bg-primary/5 hover:border-primary/40">
+                        <div
+                            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-background-dark transition-colors">
+                            <span class="material-symbols-outlined">schedule</span>
+                        </div>
+                        <div class="flex flex-col gap-0.5">
+                            <h3 class="text-slate-900 dark:text-white text-base font-bold leading-tight">Respuesta en
+                                24h</h3>
+                            <p class="text-slate-500 dark:text-[#cbbc90] text-sm font-normal leading-normal font-sans">
+                                Evaluamos su caso rápidamente.</p>
+                        </div>
+                    </div>
+                    <!-- Benefit 3 -->
+                    <div
+                        class="group flex items-center gap-4 rounded-xl border border-primary/20 bg-white/5 dark:bg-white/5 p-4 transition-all hover:bg-primary/5 hover:border-primary/40">
+                        <div
+                            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-background-dark transition-colors">
+                            <span class="material-symbols-outlined">gavel</span>
+                        </div>
+                        <div class="flex flex-col gap-0.5">
+                            <h3 class="text-slate-900 dark:text-white text-base font-bold leading-tight">Abogados
+                                Expertos</h3>
+                            <p class="text-slate-500 dark:text-[#cbbc90] text-sm font-normal leading-normal font-sans">
+                                Especialistas certificados en cada área.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Bottom Action Area -->
+        <div
+            class="sticky bottom-0 w-full p-6 pt-4 bg-gradient-to-t from-background-light dark:from-background-dark via-background-light dark:via-background-dark to-transparent backdrop-blur-[2px]">
+            <button id="btn-start" onclick="window.location.href='view_form_step1.html'"
+                class="relative w-full overflow-hidden rounded-lg bg-primary py-4 px-5 text-center transition-transform active:scale-[0.98] shadow-lg shadow-primary/20 hover:shadow-primary/40 group">
+                <div
+                    class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                </div>
+                <span
+                    class="relative text-background-dark text-lg font-bold leading-none tracking-wide font-sans flex items-center justify-center gap-2">
+                    Iniciar Solicitud
+                    <span class="material-symbols-outlined text-[20px] font-bold">arrow_forward</span>
+                </span>
+            </button>
+            <!-- Home Indicator Space -->
+            <div class="h-6 w-full"></div>
+        </div>
+    </div>
+</body>
+
+</html>

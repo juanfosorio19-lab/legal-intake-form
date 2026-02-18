@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+    <form id="legalForm">
+      <label for="nombre_contacto">Nombre de Contacto:</label><br>
+      <input type="text" id="nombre_contacto" name="nombre_contacto" required><br><br>
+
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+
+      <label for="telefono">Teléfono:</label><br>
+      <input type="text" id="telefono" name="telefono" required><br><br>
+
+      <label for="empresa">Empresa (Opcional):</label><br>
+      <input type="text" id="empresa" name="empresa"><br><br>
+
+      <label for="tipo_encargo">Tipo de Encargo:</label><br>
+      <select id="tipo_encargo" name="tipo_encargo" required>
+        <option value="familia">Familia</option>
+        <option value="penal">Penal</option>
+        <option value="migratorio">Migratorio</option>
+        <option value="societario">Societario</option>
+        <option value="civil">Civil</option>
+        <option value="laboral">Laboral</option>
+      </select><br><br>
+
+      <label for="descripcion">Descripción:</label><br>
+      <textarea id="descripcion" name="descripcion" required></textarea><br><br>
+
+      <label>Urgencia:</label><br>
+      <input type="radio" id="media" name="urgencia" value="media" checked>
+      <label for="media">Media</label><br>
+      <input type="radio" id="alta" name="urgencia" value="alta">
+      <label for="alta">Alta</label><br><br>
+      
+      <!-- Hidden fields not strictly needed in form if backend handles default, but 'fuente' is requested as hidden -->
+      <input type="hidden" name="fuente" value="web">
+
+      <!-- Replace YOUR_WEB_APP_URL_HERE with your actual deployment URL -->
+      <input type="hidden" id="endpoint_url" value="YOUR_WEB_APP_URL_HERE">
+
+      <input type="submit" value="Submit">
+    </form>
+    
+    <div id="message"></div>
+
+    <script>
+      const form = document.getElementById('legalForm');
+      const messageDiv = document.getElementById('message');
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        messageDiv.innerText = "Enviando...";
+        
+        // Get the Web App URL - USER MUST REPLACE THIS
+        const scriptURL = document.getElementById('endpoint_url').value; 
+        
+        if (scriptURL === "YOUR_WEB_APP_URL_HERE") {
+             messageDiv.innerText = "Error: Please update the 'YOUR_WEB_APP_URL_HERE' in the HTML code with your actual Google Apps Script Web App URL.";
+             return;
+        }
+
+        // Convert formData to JSON
+        const formData = new FormData(form);
+        const data = {};
+        formData.forEach((value, key) => data[key] = value);
+
+        fetch(scriptURL, {
+          method: 'POST',
+          // Key for CORS with GAS: 'no-cors' mode is opaque and you won't get a JSON response readable by JS.
+          // However, standard fetch with text/plain body usually works with redirects if handled correctly on client 
+          // or simple POST. 
+          // For simple form submission to GAS without complex auth, 'no-cors' is often used but prevents reading response.
+          // To read response, we rely on GAS returning correct headers AND simpler content type.
+          // Using text/plain prevents preflight OPTIONS request which GAS doesn't handle well for custom headers.
+          body: JSON.stringify(data),
+           headers: {
+            "Content-Type": "text/plain;charset=utf-8",
+          },
+        })
+        .then(response => response.json())
+        .then(response => {
+            messageDiv.innerText = "Enviado con éxito!";
+            form.reset();
+            console.log('Success!', response);
+        })
+        .catch(error => {
+            messageDiv.innerText = "Error! Ver consola.";
+            console.error('Error!', error.message);
+        });
+      });
+    </script>
+  </body>
+</html>

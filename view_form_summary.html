@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Formulario Legal Paso 4: Resumen Final</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@400;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#161e2c",
+                        "gold-accent": "#D4AF37",
+                        "gold-hover": "#b5952f",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased font-display min-h-screen flex flex-col overflow-x-hidden">
+    <div class="relative flex flex-col flex-1 max-w-md mx-auto w-full min-h-screen">
+        <header class="flex items-center justify-between p-6 pb-2">
+            <button onclick="window.history.back()"
+                class="text-white/70 hover:text-white transition-colors p-2 -ml-2 rounded-full hover:bg-white/5 active:bg-white/10">
+                <span class="material-symbols-outlined text-[24px]">arrow_back</span>
+            </button>
+            <div class="flex-1 text-center pr-8">
+                <span class="text-xs font-medium tracking-widest uppercase text-primary dark:text-primary/90">Bufete
+                    Jurídico</span>
+            </div>
+            <button class="text-white/70 hover:text-white transition-colors p-2 -mr-2 rounded-full hover:bg-white/5">
+                <span class="material-symbols-outlined text-[24px]">help</span>
+            </button>
+        </header>
+        <div class="px-6 py-4">
+            <div class="flex justify-between items-end mb-3">
+                <span class="text-sm font-medium text-white/90">Paso 3 de 3</span>
+                <span class="text-xs text-gold-accent font-semibold tracking-wide uppercase">Resumen</span>
+            </div>
+            <div class="h-1.5 w-full bg-surface-dark rounded-full overflow-hidden">
+                <div class="h-full bg-gold-accent w-full rounded-full shadow-[0_0_10px_rgba(212,175,55,0.5)]"></div>
+            </div>
+        </div>
+        <main class="flex-1 px-6 pt-4 pb-32 flex flex-col">
+            <div class="mb-8">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="material-symbols-outlined text-gold-accent text-xl">verified</span>
+                    <span class="text-xs font-semibold tracking-wider text-gold-accent uppercase">Verificación
+                        Final</span>
+                </div>
+                <h1 class="font-serif text-3xl text-white font-medium leading-tight mb-3">Resumen <br />de la Solicitud
+                </h1>
+                <p class="text-slate-400 text-sm leading-relaxed max-w-[95%]">
+                    Por favor revise la información proporcionada antes de enviar su consulta legal.
+                </p>
+            </div>
+            <div class="flex flex-col gap-5">
+                <div class="bg-surface-dark border border-slate-700/50 rounded-xl p-5 relative group">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-[20px]">person</span>
+                            <h3 class="text-sm font-semibold text-white tracking-wide">Información Personal</h3>
+                        </div>
+                        <button onclick="window.location.href='view_form_step1.html'"
+                            class="text-xs text-gold-accent hover:text-white transition-colors font-medium py-1 px-2 rounded hover:bg-white/5">
+                            Editar
+                        </button>
+                    </div>
+                    <div class="space-y-2 pl-7">
+                        <div>
+                            <p class="text-[10px] uppercase text-slate-500 font-semibold tracking-wider">Nombre Completo
+                            </p>
+                            <p id="summary-name" class="text-sm text-slate-200">--</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase text-slate-500 font-semibold tracking-wider">Correo
+                                Electrónico</p>
+                            <p id="summary-email" class="text-sm text-slate-200">--</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase text-slate-500 font-semibold tracking-wider">Teléfono</p>
+                            <p id="summary-phone" class="text-sm text-slate-200">--</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-surface-dark border border-slate-700/50 rounded-xl p-5 relative group">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-[20px]">gavel</span>
+                            <h3 class="text-sm font-semibold text-white tracking-wide">Detalles del Caso</h3>
+                        </div>
+                        <button onclick="window.location.href='view_form_step2.html'"
+                            class="text-xs text-gold-accent hover:text-white transition-colors font-medium py-1 px-2 rounded hover:bg-white/5">
+                            Editar
+                        </button>
+                    </div>
+                    <div class="space-y-2 pl-7">
+                        <div>
+                            <p class="text-[10px] uppercase text-slate-500 font-semibold tracking-wider">Tipo de Caso
+                            </p>
+                            <p id="summary-area" class="text-sm text-slate-200">--</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase text-slate-500 font-semibold tracking-wider">Descripción
+                                Breve</p>
+                            <p id="summary-description" class="text-sm text-slate-200 line-clamp-2">--</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Documentos section removed -->
+            </div>
+        </main>
+        <div
+            class="fixed bottom-0 left-0 right-0 px-6 pb-6 pt-4 bg-gradient-to-t from-[#101622] via-[#101622] to-transparent z-10 max-w-md mx-auto">
+            <div class="flex items-start gap-3 mb-4 px-1">
+                <div class="flex items-center h-5">
+                    <input
+                        class="w-4 h-4 rounded border-slate-600 bg-surface-dark text-gold-accent focus:ring-gold-accent focus:ring-offset-background-dark cursor-pointer"
+                        id="terms" type="checkbox" />
+                </div>
+                <label class="text-xs text-slate-400 cursor-pointer select-none" for="terms">
+                    Acepto los <a class="text-white hover:text-gold-accent underline underline-offset-2"
+                        href="#">términos y condiciones</a> y la política de privacidad.
+                </label>
+            </div>
+            <button id="btn-submit"
+                class="group relative w-full bg-gold-accent hover:bg-gold-hover text-surface-dark font-bold text-base py-4 rounded-xl shadow-[0_4px_20px_rgba(212,175,55,0.2)] transition-all active:scale-[0.98] flex items-center justify-center gap-2 overflow-hidden">
+                <div
+                    class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]">
+                </div>
+                <span id="btn-text" class="relative z-10">Enviar Consulta</span>
+                <span id="btn-icon" class="material-symbols-outlined relative z-10 text-[20px]">send</span>
+            </button>
+            <div class="mt-4 flex items-center justify-center gap-1.5 text-center opacity-60">
+                <span class="material-symbols-outlined text-[14px] text-slate-400">lock</span>
+                <p class="text-[10px] text-slate-400 font-medium">Su información está encriptada con 256-bit.</p>
+            </div>
+        </div>
+    </div>
+    <style>
+        @keyframes shimmer {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+    </style>
+
+    <!-- Hidden configuration for URL -->
+    <input type="hidden" id="endpoint_url"
+        value="https://josorio19.app.n8n.cloud/webhook/95e6c040-77e7-43f1-9063-32aa1318c275">
+
+    <script>
+        // Populate Data
+        const savedData = JSON.parse(localStorage.getItem('legalFormData')) || {};
+
+        document.getElementById('summary-name').innerText = savedData.nombre_contacto || "No especificado";
+        document.getElementById('summary-email').innerText = savedData.email || "No especificado";
+        document.getElementById('summary-phone').innerText = savedData.telefono || "No especificado";
+        document.getElementById('summary-area').innerText = savedData.tipo_encargo || "No especificado";
+        document.getElementById('summary-description').innerText = savedData.descripcion || "No especificado";
+
+        // Submit Logic
+        const btnSubmit = document.getElementById('btn-submit');
+        const termsCheckbox = document.getElementById('terms');
+        const btnText = document.getElementById('btn-text');
+
+        btnSubmit.addEventListener('click', () => {
+            if (!termsCheckbox.checked) {
+                alert("Por favor acepte los términos y condiciones.");
+                return;
+            }
+
+            const scriptURL = document.getElementById('endpoint_url').value;
+
+            // n8n validation (generic)
+            if (!scriptURL) {
+                alert("Error: URL de Webhook no configurada.");
+                return;
+            }
+
+            btnText.innerText = "Enviando...";
+            btnSubmit.disabled = true;
+
+            // Prepare data for GAS
+            // Note: GAS expects: nombre_contacto, email, telefono, empresa, tipo_encargo, descripcion, urgencia, fuente
+            // defaults: empresa (optional), urgencia (default media), fuente (web)
+
+            const payload = {
+                nombre_contacto: savedData.nombre_contacto || "",
+                email: savedData.email || "",
+                telefono: savedData.telefono || "",
+                empresa: savedData.empresa || "",
+                tipo_encargo: savedData.tipo_encargo || "",
+                descripcion: savedData.descripcion || "",
+                urgencia: "media", // Defaulting as it wasn't in steps
+                fuente: "web",
+                send_confirm: true // Force email confirmation
+            };
+
+            // Append endpoint query param for n8n routing (as required by your workflow)
+            const targetURL = scriptURL + (scriptURL.includes('?') ? '&' : '?') + 'endpoint=legal_intake';
+
+            fetch(targetURL, {
+                method: 'POST',
+                body: JSON.stringify(payload),
+                headers: { "Content-Type": "application/json" },
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok: ' + response.statusText);
+                    }
+                    return response.text().then(text => {
+                        console.log("Respuesta RAW de n8n:", text); // DEBUG
+                        try {
+                            return text ? JSON.parse(text) : {};
+                        } catch (e) {
+                            console.error("Error parseando JSON:", e);
+                            return {};
+                        }
+                    });
+                })
+                .then(data => {
+                    console.log("Datos procesados:", data); // DEBUG
+                    // Simplified logic: If we are here, fetch was successful (HTTP 200)
+                    // We don't check for data.result anymore as requested.
+                    const caseId = data.id_caso || 'PENDIENTE';
+                    localStorage.setItem('lastCaseId', caseId);
+                    localStorage.removeItem('legalFormData');
+                    window.location.href = 'view_success.html';
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert("Error de conexión o respuesta del servidor inválida. Revise la consola.");
+                    btnText.innerText = "Reintentar";
+                    btnSubmit.disabled = false;
+                });
+        });
+    </script>
+</body>
+
+</html>

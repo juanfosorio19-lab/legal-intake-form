@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ingreso de Caso Jurídico</title>
+  <style>
+    :root{--bg:#0b0f14;--card:#121826;--muted:#9aa4b2;--text:#e6edf3;--accent:#22c55e;--danger:#ef4444;--border:#233044;}
+    *{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;}
+    body{margin:0;background:linear-gradient(135deg,#0b0f14,#0b0f14 55%,#0a1220);color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;}
+    .wrap{width:100%;max-width:820px;}
+    .card{background:rgba(18,24,38,.92);border:1px solid var(--border);border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35);overflow:hidden;}
+    header{padding:18px 20px;border-bottom:1px solid var(--border);display:flex;gap:12px;align-items:center;justify-content:space-between;}
+    header h1{margin:0;font-size:18px;font-weight:700;letter-spacing:.2px}
+    header .pill{font-size:12px;color:var(--muted);padding:6px 10px;border:1px solid var(--border);border-radius:999px}
+    form{padding:18px 20px;display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+    label{display:block;font-size:12px;color:var(--muted);margin:0 0 6px 0}
+    input,select,textarea{width:100%;padding:12px 12px;border-radius:12px;border:1px solid var(--border);background:#0e1524;color:var(--text);outline:none}
+    textarea{min-height:120px;resize:vertical;grid-column:1 / -1}
+    .full{grid-column:1 / -1}
+    .row{display:flex;gap:10px;align-items:center}
+    .hint{font-size:12px;color:var(--muted);margin-top:6px}
+    .actions{grid-column:1 / -1;display:flex;gap:12px;align-items:center;justify-content:space-between;margin-top:6px}
+    button{cursor:pointer;border:0;border-radius:12px;padding:12px 14px;font-weight:700}
+    .btn{background:var(--accent);color:#06210f}
+    .btn:disabled{opacity:.6;cursor:not-allowed}
+    .ghost{background:transparent;color:var(--muted);border:1px solid var(--border)}
+    .status{grid-column:1 / -1;border-top:1px solid var(--border);padding:14px 20px;background:rgba(0,0,0,.12)}
+    .status pre{white-space:pre-wrap;word-break:break-word;margin:0;font-size:12px;color:#dbe7ff}
+    .ok{color:var(--accent);font-weight:800}
+    .bad{color:var(--danger);font-weight:800}
+    .small{font-size:12px;color:var(--muted)}
+    .hide{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <header>
+        <h1>Formulario de Ingreso — Caso Jurídico</h1>
+        <div class="pill">Envío directo a n8n</div>
+      </header>
+
+      <form id="legalForm" autocomplete="on">
+        <div class="full">
+          <label for="webhookUrl">Webhook URL (n8n) — Production</label>
+          <input id="webhookUrl" name="webhookUrl" type="url" required
+                 placeholder="https://TU_DOMINIO.app.n8n.cloud/webhook/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                 value="https://josorio19.app.n8n.cloud/webhook/95e6c040-77e7-43f1-9063-32aa1318c275" />
+          <div class="hint">Usa la URL de <b>Production</b> del nodo Webhook (no uses <code>/webhook-test/</code>).</div>
+        </div>
+
+        <!-- Honeypot anti-bot (debe ir vacío). -->
+        <div class="hide">
+          <label for="website">Website</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div>
+          <label for="nombre_contacto">Nombre contacto</label>
+          <input id="nombre_contacto" name="nombre_contacto" required placeholder="Juan Pérez" />
+        </div>
+
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required placeholder="correo@dominio.com" />
+        </div>
+
+        <div>
+          <label for="telefono">Teléfono</label>
+          <input id="telefono" name="telefono" placeholder="+56 9 1234 5678" />
+        </div>
+
+        <div>
+          <label for="empresa">Empresa (opcional)</label>
+          <input id="empresa" name="empresa" placeholder="Empresa / Particular" />
+        </div>
+
+        <div>
+          <label for="etapa">Etapa</label>
+          <select id="etapa" name="etapa">
+            <option value="lead" selected>lead</option>
+            <option value="seguimiento">seguimiento</option>
+            <option value="cliente">cliente</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="urgencia">Urgencia</label>
+          <select id="urgencia" name="urgencia">
+            <option value="baja">baja</option>
+            <option value="media" selected>media</option>
+            <option value="alta">alta</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="tipo_encargo">Tipo de encargo</label>
+          <select id="tipo_encargo" name="tipo_encargo">
+            <option value="laboral">laboral</option>
+            <option value="civil">civil</option>
+            <option value="penal">penal</option>
+            <option value="migratorio">migratorio</option>
+            <option value="familia">familia</option>
+            <option value="otro" selected>otro</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="fuente">Fuente</label>
+          <select id="fuente" name="fuente">
+            <option value="web" selected>web</option>
+            <option value="referido">referido</option>
+            <option value="rrss">rrss</option>
+          </select>
+        </div>
+
+        <div class="full">
+          <label for="descripcion">Descripción del caso</label>
+          <textarea id="descripcion" name="descripcion" required placeholder="Cuéntanos brevemente tu situación..."></textarea>
+        </div>
+
+        <div class="full row">
+          <input id="send_confirm" name="send_confirm" type="checkbox" />
+          <label for="send_confirm" style="margin:0;color:var(--text);font-size:14px">Enviar email de confirmación al cliente</label>
+        </div>
+
+        <div class="actions">
+          <div class="small">Se envía como JSON y con querystring <code>?endpoint=legal_intake</code></div>
+          <div class="row">
+            <button type="button" class="ghost" id="clearBtn">Limpiar</button>
+            <button type="submit" class="btn" id="sendBtn">Enviar</button>
+          </div>
+        </div>
+      </form>
+
+      <div class="status">
+        <div id="statusLine" class="small">Estado: esperando envío…</div>
+        <pre id="statusPre"></pre>
+      </div>
+    </div>
+  </div>
+
+<script>
+(function () {
+  var form = document.getElementById('legalForm');
+  var sendBtn = document.getElementById('sendBtn');
+  var clearBtn = document.getElementById('clearBtn');
+  var statusLine = document.getElementById('statusLine');
+  var statusPre = document.getElementById('statusPre');
+
+  function setStatus(ok, title, obj) {
+    statusLine.innerHTML = 'Estado: ' + (ok ? '<span class="ok">✅ ' : '<span class="bad">❌ ') + title + '</span>';
+    statusPre.textContent = obj ? JSON.stringify(obj, null, 2) : '';
+  }
+
+  clearBtn.addEventListener('click', function () {
+    var keep = document.getElementById('webhookUrl').value;
+    form.reset();
+    document.getElementById('webhookUrl').value = keep;
+    setStatus(true, 'formulario limpiado', null);
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var webhookUrl = document.getElementById('webhookUrl').value.trim();
+    if (!webhookUrl) {
+      setStatus(false, 'Falta Webhook URL', { error: 'missing_webhookUrl' });
+      return;
+    }
+
+    // Honeypot: si se llena, no enviamos
+    var honeypot = document.getElementById('website').value;
+    if (honeypot && honeypot.trim() !== '') {
+      setStatus(false, 'Detectado como bot (honeypot)', { error: 'honeypot_triggered' });
+      return;
+    }
+
+    var payload = {
+      endpoint: 'legal_intake',
+      nombre_contacto: document.getElementById('nombre_contacto').value || '',
+      email: document.getElementById('email').value || '',
+      telefono: document.getElementById('telefono').value || '',
+      empresa: document.getElementById('empresa').value || '',
+      etapa: document.getElementById('etapa').value || 'lead',
+      urgencia: document.getElementById('urgencia').value || 'media',
+      tipo_encargo: document.getElementById('tipo_encargo').value || 'otro',
+      descripcion: document.getElementById('descripcion').value || '',
+      fuente: document.getElementById('fuente').value || 'web',
+      // ✅ boolean real (NO string)
+      send_confirm: !!document.getElementById('send_confirm').checked,
+      // honeypot viaja vacío (para Anti-Spam Protection)
+      website: ''
+    };
+
+    sendBtn.disabled = true;
+    setStatus(true, 'enviando…', payload);
+
+    fetch(webhookUrl + '?endpoint=legal_intake', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      mode: 'cors',
+      cache: 'no-store',
+      redirect: 'follow'
+    })
+    .then(function (res) {
+      return res.text().then(function (t) {
+        var data;
+        try { data = JSON.parse(t); } catch (err) { data = { raw: t }; }
+        if (!res.ok) throw { status: res.status, data: data };
+        return { status: res.status, data: data };
+      });
+    })
+    .then(function (out) {
+      setStatus(true, 'enviado (HTTP ' + out.status + ')', out.data);
+    })
+    .catch(function (err) {
+      setStatus(false, 'No se pudo enviar', err);
+    })
+    .finally(function () {
+      sendBtn.disabled = false;
+    });
+  });
+})();
+</script>
+</body>
+</html>

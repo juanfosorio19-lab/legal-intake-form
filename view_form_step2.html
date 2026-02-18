@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Formulario Legal Paso 2: Detalles del Caso</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "primary-dark": "#0d43b0",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#192233",
+                        "border-dark": "#324467",
+                        "text-secondary": "#92a4c9",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for text area if needed */
+        textarea::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        textarea::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        textarea::-webkit-scrollbar-thumb {
+            background-color: #324467;
+            border-radius: 20px;
+        }
+
+        /* Custom Select styling override to hide default arrow in some browsers to use custom SVG */
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col antialiased selection:bg-primary selection:text-white">
+    <!-- Mobile Container -->
+    <div
+        class="mx-auto w-full max-w-md min-h-screen flex flex-col relative bg-background-light dark:bg-background-dark shadow-2xl">
+        <!-- Header -->
+        <header class="flex items-center justify-between p-4 pt-6 bg-transparent z-10">
+            <button onclick="window.history.back()" aria-label="Volver"
+                class="flex items-center justify-center w-10 h-10 rounded-full text-white hover:bg-white/5 transition-colors">
+                <span class="material-symbols-outlined text-2xl">arrow_back</span>
+            </button>
+            <span class="text-sm font-medium tracking-wide text-text-secondary uppercase">Paso 2 de 3</span>
+            <div class="w-10"></div> <!-- Spacer for alignment -->
+        </header>
+        <!-- Progress Indicator -->
+        <div class="px-6 pb-6 pt-2 w-full">
+            <div class="flex items-center gap-2">
+                <div class="h-1 flex-1 rounded-full bg-primary"></div>
+                <div class="h-1 flex-1 rounded-full bg-primary"></div>
+                <div class="h-1 flex-1 rounded-full bg-border-dark"></div>
+            </div>
+        </div>
+        <!-- Main Content -->
+        <main class="flex-1 flex flex-col px-6 pb-24 overflow-y-auto">
+            <div class="mb-8 animate-fade-in-up">
+                <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-3 tracking-tight">Detalles del Caso</h1>
+                <p class="text-gray-600 dark:text-text-secondary text-base leading-relaxed">
+                    Seleccione el área legal y describa brevemente su situación para asignarle el experto adecuado.
+                </p>
+            </div>
+            <!-- Form -->
+            <form id="step2Form" class="space-y-8 flex-1">
+                <!-- Field 1: Legal Area -->
+                <div class="space-y-2 group">
+                    <label
+                        class="block text-sm font-medium text-gray-700 dark:text-gray-300 group-focus-within:text-primary transition-colors"
+                        for="legal-area">
+                        Área Legal
+                    </label>
+                    <div class="relative">
+                        <div
+                            class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-text-secondary group-focus-within:text-primary transition-colors">
+                            <span class="material-symbols-outlined">gavel</span>
+                        </div>
+                        <select required
+                            class="block w-full pl-11 pr-10 py-4 text-base bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent text-gray-900 dark:text-white placeholder-text-secondary transition-all shadow-sm outline-none appearance-none cursor-pointer"
+                            id="legal-area" name="legal-area">
+                            <option disabled="" selected="" value="">Seleccione Área de Práctica</option>
+                            <option value="familia">Derecho de Familia</option>
+                            <option value="penal">Derecho Penal</option>
+                            <option value="migratorio">Migración</option>
+                            <option value="societario">Derecho Corporativo</option>
+                            <option value="civil">Litigio Civil</option>
+                            <option value="laboral">Derecho Laboral</option>
+                            <option value="inmobiliaria">Inmobiliaria</option>
+                            <option value="otros">Otros</option>
+                        </select>
+                        <div
+                            class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-text-secondary">
+                            <span class="material-symbols-outlined">expand_more</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Field 2: Brief Description -->
+                <div class="space-y-2 group">
+                    <div class="flex justify-between items-center">
+                        <label
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 group-focus-within:text-primary transition-colors"
+                            for="description">
+                            Descripción Breve
+                        </label>
+                        <span class="text-xs text-text-secondary" id="char-count">0/500</span>
+                    </div>
+                    <div class="relative">
+                        <textarea required
+                            class="block w-full p-4 text-base bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent text-gray-900 dark:text-white placeholder-text-secondary transition-all shadow-sm outline-none resize-none"
+                            id="description" maxlength="500" name="description"
+                            oninput="document.getElementById('char-count').innerText = this.value.length + '/500'"
+                            placeholder="Por favor proporcione un resumen de los hechos o el asunto legal que enfrenta..."
+                            rows="6"></textarea>
+                    </div>
+                    <p class="text-xs text-text-secondary pt-1 flex items-start gap-1">
+                        <span class="material-symbols-outlined text-[14px] mt-[1px]">lock</span>
+                        Su información está encriptada y segura.
+                    </p>
+                </div>
+            </form>
+        </main>
+        <!-- Footer / Sticky Actions -->
+        <footer
+            class="fixed bottom-0 w-full max-w-md bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-t border-gray-200 dark:border-border-dark p-6 z-20">
+            <div class="flex flex-col gap-3">
+                <button id="btn-continue"
+                    class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-4 px-6 rounded-xl shadow-lg shadow-primary/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2 group"
+                    type="button">
+                    Continuar
+                    <span
+                        class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                </button>
+                <button
+                    class="w-full bg-transparent hover:bg-white/5 text-gray-600 dark:text-text-secondary font-medium py-3 px-6 rounded-xl transition-colors"
+                    type="button">
+                    Guardar y Finalizar Después
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const btnContinue = document.getElementById('btn-continue');
+        const legalAreaInput = document.getElementById('legal-area');
+        const descriptionInput = document.getElementById('description');
+
+        // Load saved data
+        const savedData = JSON.parse(localStorage.getItem('legalFormData')) || {};
+        if (savedData.tipo_encargo) legalAreaInput.value = savedData.tipo_encargo;
+        if (savedData.descripcion) descriptionInput.value = savedData.descripcion;
+
+        btnContinue.addEventListener('click', () => {
+            if (!legalAreaInput.value || !descriptionInput.value) {
+                alert('Por favor complete todos los campos.');
+                return;
+            }
+
+            const currentData = JSON.parse(localStorage.getItem('legalFormData')) || {};
+            const newData = {
+                ...currentData,
+                tipo_encargo: legalAreaInput.value,
+                descripcion: descriptionInput.value,
+            };
+            localStorage.setItem('legalFormData', JSON.stringify(newData));
+
+            // Navigate to Summary directly (Skipping Step 3 as requested)
+            window.location.href = 'view_form_summary.html';
+        });
+    </script>
+</body>
+
+</html>
